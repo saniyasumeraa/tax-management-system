@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Tax Details Breakdown</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="view-details.js" defer></script>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+<div class="logo-section">
+
+<img src="logo.png" class="logo">
+
+<h1>Tax Details Breakdown</h1>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+<main class="main">
+
+<div class="container">
+
+<h2>Income Details</h2>
+
+<table class="info-table">
+
+<tr>
+<th>Type</th>
+<th>Amount (₹)</th>
+</tr>
+
+<tr>
+<td>Salary</td>
+<td id="salary"></td>
+</tr>
+
+<tr>
+<td>Interest Income</td>
+<td id="interest"></td>
+</tr>
+
+<tr>
+<td>Rental Income</td>
+<td id="rental"></td>
+</tr>
+
+<tr>
+<td>Other Income</td>
+<td id="otherIncome"></td>
+</tr>
+
+</table>
+
+
+<h2>Deductions</h2>
+
+<table class="info-table">
+
+<tr>
+<th>Type</th>
+<th>Amount (₹)</th>
+</tr>
+
+<tr>
+<td>80C</td>
+<td id="d80c"></td>
+</tr>
+
+<tr>
+<td>80D</td>
+<td id="d80d"></td>
+</tr>
+
+<tr>
+<td>80TTA</td>
+<td id="d80tta"></td>
+</tr>
+
+</table>
+
+
+<h2>Allowances</h2>
+
+<table class="info-table">
+
+<tr>
+<th>Type</th>
+<th>Amount (₹)</th>
+</tr>
+
+<tr>
+<td>HRA</td>
+<td id="hra"></td>
+</tr>
+
+<tr>
+<td>Transport</td>
+<td id="transport"></td>
+</tr>
+
+<tr>
+<td>Medical</td>
+<td id="medical"></td>
+</tr>
+
+</table>
+
+
+<h2>Tax Summary</h2>
+
+<table class="info-table">
+
+<tr>
+<th>Summary</th>
+<th>Amount (₹)</th>
+</tr>
+
+<tr>
+<td>Total Income</td>
+<td id="totalIncome"></td>
+</tr>
+
+<tr>
+<td>Total Deduction</td>
+<td id="totalDeduction"></td>
+</tr>
+
+<tr>
+<td>Taxable Income</td>
+<td id="taxableIncome"></td>
+</tr>
+
+<tr>
+<td>Total Tax</td>
+<td id="totalTax"></td>
+</tr>
+
+</table>
+
+
+<!-- BACK BUTTON -->
+<button class="calculate-btn"
+onclick="window.location.href='index.html'">
+
+⬅ Back to Calculator
+
+</button>
+
+</div>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+© 2026 Smart Income Tax Management System | All Rights Reserved
+
+</footer>
+
+</body>
+
+</html>

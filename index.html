@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Smart Income Tax Management System</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+<div class="logo-section">
+
+<img src="logo.png" class="logo">
+
+<h1>Smart Income Tax Management System</h1>
+
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="tax-laws.html">Tax Laws & Rules</a>
+<a href="tax-services.html">Tax Info & Services</a>
+<a href="tax-eservices.html">Tax e-Services</a>
+
+</nav>
+
+</header>
+
+
+<!-- MAIN BODY -->
+
+<main class="main">
+
+<h2 class="main-title">Income Tax Calculator</h2>
+
+
+<!-- TAB NAVIGATION -->
+
+<div class="tabs">
+
+<button class="tab-btn active" onclick="openTab('basic')">
+Basic Details
+</button>
+
+<button class="tab-btn" onclick="openTab('income')">
+Income Details
+</button>
+
+<button class="tab-btn" onclick="openTab('deduction')">
+Deduction
+</button>
+
+<button class="tab-btn" onclick="openTab('allowance')">
+Allowances
+</button>
+
+</div>
+
+
+<div class="grid">
+
+
+<!-- LEFT PANEL -->
+<div class="left-panel">
+
+
+<!-- BASIC DETAILS -->
+
+<div id="basic" class="tab-content active">
+
+<div class="row">
+
+<div>
+
+<label>Financial Year</label>
+<select id="financialYear">
+<option>FY 2025-26</option>
+<option>FY 2024-25</option>
+</select>
+
+</div>
+
+<div>
+
+<label>Age Group</label>
+<select id="ageGroup">
+<option value="below60">Below 60</option>
+<option value="60to80">60-80</option>
+<option value="above80">Above 80</option>
+</select>
+
+</div>
+
+</div>
+
+
+<h3>Income Tax Slab Rates</h3>
+
+<div class="row">
+
+<div class="table-card">
+
+<h4>New Regime</h4>
+
+<table>
+<tr><th>Income</th><th>Tax</th></tr>
+<tr><td>Up to 3 lakh</td><td>0%</td></tr>
+<tr><td>3-6 lakh</td><td>5%</td></tr>
+<tr><td>6-9 lakh</td><td>10%</td></tr>
+<tr><td>9-12 lakh</td><td>15%</td></tr>
+<tr><td>12-15 lakh</td><td>20%</td></tr>
+<tr><td>Above 15 lakh</td><td>30%</td></tr>
+</table>
+
+</div>
+
+
+<div class="table-card">
+
+<h4>Old Regime</h4>
+
+<table>
+<tr><th>Income</th><th>Tax</th></tr>
+<tr><td>Up to 2.5 lakh</td><td>0%</td></tr>
+<tr><td>2.5-5 lakh</td><td>5%</td></tr>
+<tr><td>5-10 lakh</td><td>20%</td></tr>
+<tr><td>Above 10 lakh</td><td>30%</td></tr>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INCOME DETAILS -->
+
+<div id="income" class="tab-content">
+
+<label>Salary</label>
+<input type="number" id="salary">
+
+<label>Interest Income</label>
+<input type="number" id="interest">
+
+<label>Rental Income</label>
+<input type="number" id="rental">
+
+<label>Other Income</label>
+<input type="number" id="otherIncome">
+
+</div>
+
+
+<!-- DEDUCTION -->
+
+<div id="deduction" class="tab-content">
+
+<label>80C</label>
+<input type="number" id="d80c">
+
+<label>80D</label>
+<input type="number" id="d80d">
+
+<label>80TTA</label>
+<input type="number" id="d80tta">
+
+</div>
+
+
+<!-- ALLOWANCE -->
+
+<div id="allowance" class="tab-content">
+
+<label>HRA</label>
+<input type="number" id="hra">
+
+<label>Transport Allowance</label>
+<input type="number" id="transport">
+
+<label>Medical Allowance</label>
+<input type="number" id="medical">
+
+<button onclick="calculateTax()" class="calculate-btn">
+Calculate Tax
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+
+<div class="right-panel">
+
+<h3>Tax Results</h3>
+
+<div id="results">
+
+<p>Total Income: ₹0</p>
+<p>Total Deduction: ₹0</p>
+<p>Taxable Income: ₹0</p>
+<p>Total Tax: ₹0</p>
+
+</div>
+
+<div id="comparison"></div>
+
+<button class="view-btn"
+onclick="calculateTax(); window.location.href='view-details.html';">
+View Details
+</button>
+</div>
+
+<canvas id="taxChart" height="100"></canvas>
+
+</div>
+
+
+<!-- INFO SECTION -->
+
+<div class="info-card">
+
+<h3>How to Fill Income Tax Details</h3>
+
+<div class="info-section">
+<h4>Basic Details</h4>
+<p>
+Select financial year and age group. Tax slabs differ based on age and regime.
+</p>
+</div>
+
+<div class="info-section">
+<h4>Income Details</h4>
+<p>
+Enter total income from salary, interest, rent, and other sources.
+</p>
+</div>
+
+<div class="info-section">
+<h4>Deductions</h4>
+<p>
+Enter deductions under sections like 80C, 80D, and 80TTA to reduce taxable income.
+</p>
+</div>
+
+<div class="info-section">
+<h4>Allowances</h4>
+<p>
+Enter allowances like HRA, transport, and medical benefits.
+</p>
+</div>
+
+</div>
+
+<div class="info-card">
+
+<h3>Guide for Filling Details</h3>
+
+<h4>1. Basic Details</h4>
+<ul>
+<li>Select the correct Financial Year (example: FY 2025-26)</li>
+<li>Select your Age Group (important for tax calculation)</li>
+<li>Tax slab rates are shown for reference</li>
+</ul>
+
+<h4>2. Income Details</h4>
+<ul>
+<li><b>Salary:</b> Total annual salary received</li>
+<li><b>Interest Income:</b> Bank FD, savings interest</li>
+<li><b>Rental Income:</b> Income from house rent</li>
+<li><b>Other Income:</b> Any additional income (freelancing, etc.)</li>
+</ul>
+
+<h4>3. Deductions</h4>
+<ul>
+<li><b>80C:</b> Investments like LIC, PPF, ELSS (max ₹1.5 lakh)</li>
+<li><b>80D:</b> Medical insurance premium</li>
+<li><b>80TTA:</b> Savings account interest deduction</li>
+</ul>
+
+<h4>4. Allowances</h4>
+<ul>
+<li><b>HRA:</b> House Rent Allowance received</li>
+<li><b>Transport:</b> Travel allowance from employer</li>
+<li><b>Medical:</b> Medical reimbursement/allowance</li>
+</ul>
+
+<div class="highlight-box">
+Tip: Enter correct values to get accurate tax calculation.
+</div>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>Income Tax – General Knowledge</h3>
+
+<!-- WHAT IS INCOME TAX -->
+<div class="info-section">
+
+<h4>1. What is Income Tax?</h4>
+
+<p>
+Income tax is a direct tax paid by individuals and businesses to the government 
+based on the income they earn. It is one of the main sources of government revenue.
+</p>
+
+</div>
+
+
+<!-- TAX SLAB -->
+<div class="info-section">
+
+<h4>2. What is Income Tax Slab?</h4>
+
+<p>
+Income tax slab is a system where different portions of income are taxed at different rates.
+Higher income falls into higher slabs and is taxed at higher percentages.
+</p>
+
+</div>
+
+
+<!-- HOW TAX IS CALCULATED -->
+<div class="info-section">
+
+<h4>3. How is Income Tax Calculated?</h4>
+
+<p>
+Tax calculation follows a simple process:
+</p>
+
+<ul>
+<li>Total Income = Salary + Interest + Rent + Other Income</li>
+<li>Total Deduction = 80C + 80D + 80TTA + Allowances</li>
+<li>Taxable Income = Total Income − Total Deductions</li>
+<li>Tax is applied based on slab rates</li>
+<li>4% Health & Education Cess is added to final tax</li>
+</ul>
+
+</div>
+
+
+<!-- OLD VS NEW -->
+<div class="info-section">
+
+<h4>4. Old vs New Tax Regime</h4>
+
+<ul>
+<li><b>Old Regime:</b> Higher tax rates but allows deductions</li>
+<li><b>New Regime:</b> Lower tax rates but fewer deductions</li>
+</ul>
+
+</div>
+
+
+<!-- IMPORTANT SECTIONS -->
+<div class="info-section">
+
+<h4>5. Important Tax Sections</h4>
+
+<ul>
+<li><b>80C:</b> Investment deduction (₹1.5 lakh)</li>
+<li><b>80D:</b> Medical insurance</li>
+<li><b>80TTA:</b> Interest deduction</li>
+<li><b>87A:</b> Rebate for low income</li>
+</ul>
+
+</div>
+
+
+<!-- WHY PAY TAX -->
+<div class="info-section">
+
+<h4>6. Why Do We Pay Income Tax?</h4>
+
+<p>
+Income tax helps the government fund infrastructure, education, healthcare, 
+defense, and other public services.
+</p>
+
+</div>
+
+
+<div class="highlight-box">
+
+Understanding income tax helps you plan savings and reduce tax legally.
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+© 2026 Smart Income Tax Management System | All Rights Reserved
+
+</footer>
+
+<script>
+function saveAndGo()
+{
+    // Save values
+    localStorage.setItem("salary",
+        document.getElementById("salary").value || 0);
+
+    localStorage.setItem("interest",
+        document.getElementById("interest").value || 0);
+
+    localStorage.setItem("rental",
+        document.getElementById("rental").value || 0);
+
+    localStorage.setItem("otherIncome",
+        document.getElementById("otherIncome").value || 0);
+
+    localStorage.setItem("d80c",
+        document.getElementById("d80c").value || 0);
+
+    localStorage.setItem("d80d",
+        document.getElementById("d80d").value || 0);
+
+    localStorage.setItem("d80tta",
+        document.getElementById("d80tta").value || 0);
+
+    localStorage.setItem("hra",
+        document.getElementById("hra").value || 0);
+
+    localStorage.setItem("transport",
+        document.getElementById("transport").value || 0);
+
+    localStorage.setItem("medical",
+        document.getElementById("medical").value || 0);
+
+    // GO TO PAGE
+    window.location.href = "view-details.html";
+}
+</script>
+</body>
+</html>
