@@ -30,7 +30,7 @@
 <nav class="nav">
 
 <a href="index.html">Home</a>
-<a href="about.html">About Us</a>
+<a href="about.html">About</a>
 <a href="tax-laws.html">Tax Laws & Rules</a>
 <a href="tax-services.html">Tax Info & Services</a>
 <a href="tax-eservices.html">Tax e-Services</a>
@@ -139,7 +139,22 @@ Allowances
 <tr><td>5-10 lakh</td><td>20%</td></tr>
 <tr><td>Above 10 lakh</td><td>30%</td></tr>
 </table>
+<div class="table-card">
 
+<label>Employment Type</label>
+<select id="jobType">
+<option value="private">Private Employee</option>
+<option value="government">Government Employee</option>
+</select>
+
+</div>
+<div class="table-card">
+<label>Tax Type</label>
+<select id="taxType">
+<option value="central">Central Tax Only</option>
+<option value="both">Central + State Tax</option>
+</select>
+</div>
 </div>
 
 </div>
@@ -212,10 +227,24 @@ Calculate Tax
 
 <div id="results">
 
-<p>Total Income: ₹0</p>
-<p>Total Deduction: ₹0</p>
-<p>Taxable Income: ₹0</p>
-<p>Total Tax: ₹0</p>
+<p><b>Total Income:</b> <span id="r_income">₹ 0</span></p>
+
+<p><b>Total Deduction:</b> <span id="r_deduction">₹ 0</span></p>
+
+<p><b>Taxable Income:</b> <span id="r_taxable">₹ 0</span></p>
+
+<hr>
+
+<p><b>Central Tax:</b> <span id="r_central">₹ 0</span></p>
+
+<p><b>State Tax:</b> <span id="r_state">₹ 0</span></p>
+
+<hr>
+
+<p style="font-size:18px; color:green;">
+<b>Total Tax Payable:</b>
+<span id="r_total">₹ 0</span>
+</p>
 
 </div>
 
@@ -407,6 +436,45 @@ Understanding income tax helps you plan savings and reduce tax legally.
 
 </div>
 
+<div class="faq-section">
+
+<h2>Frequently Asked Questions (FAQ)</h2>
+
+<div class="faq-item">
+<h4>What is Income Tax?</h4>
+<p>Income tax is a direct tax paid by individuals based on their income.</p>
+</div>
+
+<div class="faq-item">
+<h4>What is taxable income?</h4>
+<p>Taxable income is total income after deductions.</p>
+</div>
+
+<div class="faq-item">
+<h4>What is difference between old and new regime?</h4>
+<p>Old regime allows deductions, new regime has lower tax rates but fewer deductions.</p>
+</div>
+
+</div>
+
+<div class="faq-section">
+
+<h2>Ask AI Tax Assistant</h2>
+
+<input type="text" id="aiQuestion" placeholder="Ask anything about tax...">
+<p><b>Try asking:</b></p>
+<ul>
+<li>What is income tax?</li>
+<li>Explain 80C</li>
+<li>What is HRA?</li>
+<li>What is tax slab?</li>
+</ul>
+
+<button onclick="getAnswer()">Ask</button>
+
+<div id="aiAnswer"></div>
+
+</div>
 
 </main>
 
