@@ -28,4 +28,9 @@ window.onload = function()
     setValue("totalDeduction");
     setValue("taxableIncome");
     setValue("totalTax");
+
+        setValue("stateTax");
+
+         document.getElementById("jobType").innerHTML =
+    localStorage.getItem("jobType") || "N/A";
 };
