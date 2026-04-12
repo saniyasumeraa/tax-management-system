@@ -406,3 +406,48 @@ padding:20px;
 .info-table tr:nth-child(even){
     background:#f9fafb;
 }
+
+.result-card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+margin-top:20px;
+}
+
+.result-card p{
+margin:8px 0;
+font-size:15px;
+}
+
+.result-card hr{
+margin:10px 0;
+border:0.5px solid #e5e7eb;
+}
+
+.faq-section{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.faq-item{
+margin-bottom:15px;
+}
+
+.faq-section input,
+.faq-section textarea{
+width:100%;
+padding:8px;
+margin:8px 0;
+}
+
+.faq-section button{
+background:#2563eb;
+color:white;
+padding:8px;
+border:none;
+cursor:pointer;
+}
