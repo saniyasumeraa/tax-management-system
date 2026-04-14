@@ -451,3 +451,15 @@ padding:8px;
 border:none;
 cursor:pointer;
 }
+
+body{
+font-family:Arial;
+margin:0;
+background:#eef2ff;
+}
+
+.lang-box{
+position:absolute;
+top:15px;
+right:30px;
+}
