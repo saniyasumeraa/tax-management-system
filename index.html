@@ -3,7 +3,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <title>Smart Income Tax Management System</title>
 
 <link rel="stylesheet" href="style.css">
@@ -19,36 +18,47 @@
 <header class="header">
 
 <div class="logo-section">
-
 <img src="logo.png" class="logo">
-
 <h1>Smart Income Tax Management System</h1>
-
 </div>
 
-<!-- NAVIGATION -->
-<nav class="nav">
+<!-- LANGUAGE SELECTOR -->
+<div class="lang-box">
+<label>Select Language:</label>
 
+<select onchange="changeLanguage(this.value)">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="te">Telugu</option>
+</select>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="tax-laws.html">Tax Laws & Rules</a>
 <a href="tax-services.html">Tax Info & Services</a>
 <a href="tax-eservices.html">Tax e-Services</a>
-
 </nav>
 
 </header>
 
 
-<!-- MAIN BODY -->
-
+<!-- MAIN -->
 <main class="main">
 
-<h2 class="main-title">Income Tax Calculator</h2>
+<h2 class="main-title" id="title">Income Tax Calculator</h2>
 
 
-<!-- TAB NAVIGATION -->
+<!-- GRID -->
+<div class="grid">
 
+
+<!-- LEFT PANEL -->
+<div class="left-panel">
+
+<!-- TABS -->
 <div class="tabs">
 
 <button class="tab-btn active" onclick="openTab('basic')">
@@ -70,15 +80,7 @@ Allowances
 </div>
 
 
-<div class="grid">
-
-
-<!-- LEFT PANEL -->
-<div class="left-panel">
-
-
-<!-- BASIC DETAILS -->
-
+<!-- BASIC TAB -->
 <div id="basic" class="tab-content active">
 
 <div class="row">
@@ -162,28 +164,37 @@ Allowances
 </div>
 
 
-<!-- INCOME DETAILS -->
 
+<!-- INCOME TAB -->
 <div id="income" class="tab-content">
 
-<label>Salary</label>
+<div class="card">
+
+<h3 id="incomeTitle">Income Details</h3>
+
+<label id="labelSalary">Salary</label>
 <input type="number" id="salary">
 
-<label>Interest Income</label>
+<label id="labelInterest">Interest Income</label>
 <input type="number" id="interest">
 
-<label>Rental Income</label>
+<label id="labelRental">Rental Income</label>
 <input type="number" id="rental">
 
-<label>Other Income</label>
+<label id="labelOther">Other Income</label>
 <input type="number" id="otherIncome">
 
 </div>
 
+</div>
 
-<!-- DEDUCTION -->
 
+<!-- DEDUCTION TAB -->
 <div id="deduction" class="tab-content">
+
+<div class="card">
+
+<h3 id="deductionTitle">Deductions</h3>
 
 <label>80C</label>
 <input type="number" id="d80c">
@@ -196,21 +207,26 @@ Allowances
 
 </div>
 
+</div>
 
-<!-- ALLOWANCE -->
 
+<!-- ALLOWANCE TAB -->
 <div id="allowance" class="tab-content">
+
+<div class="card">
+
+<h3>Allowances</h3>
 
 <label>HRA</label>
 <input type="number" id="hra">
 
-<label>Transport Allowance</label>
+<label>Transport</label>
 <input type="number" id="transport">
 
-<label>Medical Allowance</label>
+<label>Medical</label>
 <input type="number" id="medical">
 
-<button onclick="calculateTax()" class="calculate-btn">
+<button id="btnCalculate" onclick="calculateTax()" class="calculate-btn">
 Calculate Tax
 </button>
 
@@ -218,14 +234,14 @@ Calculate Tax
 
 </div>
 
+</div>
 
 <!-- RIGHT PANEL -->
-
 <div class="right-panel">
 
-<h3>Tax Results</h3>
+<h3 id="resultTitle">Tax Results</h3>
 
-<div id="results">
+<div class="result-card">
 
 <p><b>Total Income:</b> <span id="r_income">₹ 0</span></p>
 
@@ -246,20 +262,22 @@ Calculate Tax
 <span id="r_total">₹ 0</span>
 </p>
 
-</div>
+<p><b>Suggestion:</b> <span id="taxSuggestion"></span></p>
+<p><b>Status:</b> <span id="taxStatus"></span></p>
 
-<div id="comparison"></div>
+</div>
 
 <button class="view-btn"
 onclick="calculateTax(); window.location.href='view-details.html';">
 View Details
 </button>
+
 </div>
 
+</div>
+
+<!-- CHART -->
 <canvas id="taxChart" height="100"></canvas>
-
-</div>
-
 
 <!-- INFO SECTION -->
 
@@ -435,40 +453,12 @@ Understanding income tax helps you plan savings and reduce tax legally.
 </div>
 
 </div>
-
-<div class="faq-section">
-
-<h2>Frequently Asked Questions (FAQ)</h2>
-
-<div class="faq-item">
-<h4>What is Income Tax?</h4>
-<p>Income tax is a direct tax paid by individuals based on their income.</p>
-</div>
-
-<div class="faq-item">
-<h4>What is taxable income?</h4>
-<p>Taxable income is total income after deductions.</p>
-</div>
-
-<div class="faq-item">
-<h4>What is difference between old and new regime?</h4>
-<p>Old regime allows deductions, new regime has lower tax rates but fewer deductions.</p>
-</div>
-
-</div>
-
+<!-- FAQ -->
 <div class="faq-section">
 
 <h2>Ask AI Tax Assistant</h2>
 
 <input type="text" id="aiQuestion" placeholder="Ask anything about tax...">
-<p><b>Try asking:</b></p>
-<ul>
-<li>What is income tax?</li>
-<li>Explain 80C</li>
-<li>What is HRA?</li>
-<li>What is tax slab?</li>
-</ul>
 
 <button onclick="getAnswer()">Ask</button>
 
@@ -476,54 +466,14 @@ Understanding income tax helps you plan savings and reduce tax legally.
 
 </div>
 
+
 </main>
 
 
 <!-- FOOTER -->
-
 <footer class="footer">
-
-© 2026 Smart Income Tax Management System | All Rights Reserved
-
+© 2026 Smart Income Tax Management System
 </footer>
 
-<script>
-function saveAndGo()
-{
-    // Save values
-    localStorage.setItem("salary",
-        document.getElementById("salary").value || 0);
-
-    localStorage.setItem("interest",
-        document.getElementById("interest").value || 0);
-
-    localStorage.setItem("rental",
-        document.getElementById("rental").value || 0);
-
-    localStorage.setItem("otherIncome",
-        document.getElementById("otherIncome").value || 0);
-
-    localStorage.setItem("d80c",
-        document.getElementById("d80c").value || 0);
-
-    localStorage.setItem("d80d",
-        document.getElementById("d80d").value || 0);
-
-    localStorage.setItem("d80tta",
-        document.getElementById("d80tta").value || 0);
-
-    localStorage.setItem("hra",
-        document.getElementById("hra").value || 0);
-
-    localStorage.setItem("transport",
-        document.getElementById("transport").value || 0);
-
-    localStorage.setItem("medical",
-        document.getElementById("medical").value || 0);
-
-    // GO TO PAGE
-    window.location.href = "view-details.html";
-}
-</script>
 </body>
 </html>
