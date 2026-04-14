@@ -1,3 +1,37 @@
+const translations = {
+
+en: {
+title: "Income Tax Calculator",
+salary: "Salary",
+calculate: "Calculate Tax"
+},
+
+hi: {
+title: "आयकर कैलकुलेटर",
+salary: "वेतन",
+calculate: "कर की गणना करें"
+},
+
+te: {
+title: "ఆదాయ పన్ను కాలిక్యులేటర్",
+salary: "జీతం",
+calculate: "పన్ను లెక్కించండి"
+}
+
+};
+
+function changeLanguage(lang)
+{
+    document.getElementById("title").innerText =
+    translations[lang].title;
+
+    document.getElementById("labelSalary").innerText =
+    translations[lang].salary;
+
+    document.getElementById("btnCalculate").innerText =
+    translations[lang].calculate;
+}
+
 function openTab(tabId)
 {
 
@@ -27,22 +61,24 @@ document
 
 }
 
-function openTab(tabId)
+function openTab(tabName)
 {
+    let tabs = document.getElementsByClassName("tab-content");
+    let buttons = document.getElementsByClassName("tab-btn");
 
-document.querySelectorAll(".tab-content")
-.forEach(tab =>
-tab.classList.remove("active"));
+    for(let i=0; i<tabs.length; i++)
+    {
+        tabs[i].classList.remove("active");
+    }
 
-document.getElementById(tabId)
-.classList.add("active");
+    for(let i=0; i<buttons.length; i++)
+    {
+        buttons[i].classList.remove("active");
+    }
 
-document.querySelectorAll(".tab-btn")
-.forEach(btn =>
-btn.classList.remove("active"));
+    document.getElementById(tabName).classList.add("active");
 
-event.target.classList.add("active");
-
+    event.target.classList.add("active");
 }
 
 function calculateTax()
@@ -329,3 +365,4 @@ function getAnswer()
     document.getElementById("aiAnswer").innerHTML =
     "<p><b>Answer:</b> " + answer + "</p>";
 }
+
