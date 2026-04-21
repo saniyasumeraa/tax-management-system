@@ -130,7 +130,7 @@ function calculateTax()
 
 
     // ===== CENTRAL TAX (NEW REGIME SIMPLIFIED) =====
-    let tax = 0;
+    let tax = Number(tax)|| 0;
 
     if(taxableIncome <= 300000)
     {
@@ -151,7 +151,7 @@ function calculateTax()
 
 
     // ===== STATE TAX (SIMULATION) =====
-    let stateTax = 0;
+    let stateTax = Number(stateTax)||0;
 
     if(taxType === "both")
     {
